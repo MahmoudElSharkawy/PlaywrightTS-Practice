@@ -6,11 +6,9 @@ export class ApisBase {
     playwright: PlaywrightWorkerArgs;
     playwrightAPI: PlaywrightModule;
 
-    readonly baseURL = 'https://restful-booker.herokuapp.com';   // should handle the base URL from the config file
-
+    readonly baseURL = 'https://restful-booker.herokuapp.com';   // todos: Should handle the base URL from the config file
 
     readonly auth_serviceName = '/auth';
-
 
     constructor(apiContext: APIRequestContext, playwright: PlaywrightModule) {
         this.apiContext = apiContext;
@@ -28,7 +26,6 @@ export class ApisBase {
             'Content-Type': 'application/json'
         };
 
-        // Use the stored 'this.request' object
         const response = await this.apiContext.post(url, {
             data: requestBody,
             headers: headers
@@ -36,9 +33,8 @@ export class ApisBase {
 
         if (response.ok()) {
             const json = await response.json();
-            console.log('token is: ' + json.token)
+            console.log('Token: ' + json.token)
             this.apiContext = await this.playwrightAPI.request.newContext({
-                // Should handle the base URL from the config file
                 baseURL: this.baseURL,
                 extraHTTPHeaders: {
                     'Cookie': 'token=' + json.token,

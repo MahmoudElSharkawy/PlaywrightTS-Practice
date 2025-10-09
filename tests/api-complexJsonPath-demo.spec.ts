@@ -1,11 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-let baseURL = 'https://restful-booker.herokuapp.com';
-let auth_serviceName = '/auth'
-let booking_serviceName = '/booking'
-
-
-
 test.describe('Complex Json Path', () => {
 
   test('test complex jsonpath 1', async ({ request }) => {
