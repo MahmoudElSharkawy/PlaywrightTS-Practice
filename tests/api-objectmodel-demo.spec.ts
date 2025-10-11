@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { ApisBase } from '../apis/ApisBase.ts';
 import { ApisBooking } from '../apis/ApisBooking.ts';
+import * as allure from "allure-js-commons";
 
 let apisBase: ApisBase;
 let apisBooking: ApisBooking;
@@ -10,6 +11,7 @@ let apisBooking: ApisBooking;
 test.describe('Restful-Booker APIs Object Model', () => {
 
     test('Booking e2e scenario', async () => {
+        allure.feature('Restful-Booker APIs Object Model');
         const firstname = 'Mahmoud', lastname = 'ElSharkawy';
         await apisBooking.createBooking(firstname, lastname);
         await apisBooking.assertBookingExistsInTheList(firstname, lastname);

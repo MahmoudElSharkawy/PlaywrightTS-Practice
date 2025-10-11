@@ -12,11 +12,11 @@ export class ApisBase {
 
     constructor(apiContext: APIRequestContext, playwright: PlaywrightModule) {
         this.apiContext = apiContext;
-        this.playwrightAPI = playwright; 
+        this.playwrightAPI = playwright;
 
     }
 
-    async login(username: string, password: string) : Promise<APIRequestContext | null> {
+    async login(username: string, password: string): Promise<APIRequestContext | null> {
         const url = this.baseURL + this.auth_serviceName;
         const requestBody = {
             "username": username,
