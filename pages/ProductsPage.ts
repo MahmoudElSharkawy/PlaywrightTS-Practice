@@ -1,4 +1,5 @@
 import { type Page, type Locator, expect } from '@playwright/test';
+import { step, StepContext } from 'allure-js-commons';
 
 export class ProductsPage {
   readonly page: Page;
@@ -11,10 +12,10 @@ export class ProductsPage {
     this.productLabel = page.locator('.product_label');
   }
 
-    // todo: Add allure steps in actions
-
   async assertLoginSuccess() {
-    await expect(this.productLabel).toHaveText('Products');
+    await step("Navigate to Login Page", async () => {
+      await expect(this.productLabel).toHaveText('Products');
+    });
   }
 
 }
