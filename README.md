@@ -1,5 +1,5 @@
 # PlaywrightTS-Practice
-Practicing [**Playwright Framework**](https://playwright.dev/) for **Web GUI** and **APIs** Test Automation.
+Practicing [**Playwright Framework**](https://playwright.dev/) using TypeScript for **Web GUI** and **APIs** Test Automation.
 
 ## Setup:
 1. Install [**Node.js®**](https://nodejs.org/en/download/)
