@@ -43,3 +43,9 @@ jobs:
         uses: daun/playwright-report-summary@v3
         with:
           report-file: reports/json-report/test-results.json
+      - name: Publish Test Report
+        uses: ctrf-io/github-test-reporter@v1
+        with:
+          report-path: 'ctrf/ctrf-report.json'
+          github-report: true
+        if: always()
