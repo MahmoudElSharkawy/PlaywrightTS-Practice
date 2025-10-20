@@ -12,6 +12,10 @@ import * as path from 'path';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  metadata: {
+    apiConsoleLogs: false, // Enable APIs console logs
+    // apiConsoleLogs: process.env.API_CONSOLE_LOGS === 'true', // for changing the value from the commandline. will work only if added ($env:API_CONSOLE_LOGS="true";) before the execution command
+  },
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
