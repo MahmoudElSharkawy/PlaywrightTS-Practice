@@ -78,9 +78,8 @@ export class ApiActions {
         }
 
         // Attach request info
-        // await step('Request details', async () => {
         await attachment(
-          'Request',
+          'Request details',
           JSON.stringify(
             {
               method,
@@ -93,27 +92,24 @@ export class ApiActions {
           ),
           ContentType.JSON
         );
-        // });
 
         // Attach response info
-        // await step('Response details', async () => {
-        await attachment(
-          'Response',
+        await attachment('Response details',
           JSON.stringify(
             {
               status,
-              headers: responseHeaders,
-              body: responseBody,
               durationMs,
-            },
-            null,
-            2
+              headers: responseHeaders,
+              // body: responseBody,
+            }, null, 2
           ),
           ContentType.JSON
         );
-        // });
+        await attachment('Response body',
+          JSON.stringify(responseBody, null, 2),
+          ContentType.JSON
+        );
       }
-
       return response!;
     });
   }
