@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import * as path from 'path';
+import * as os from "node:os";
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -29,7 +30,15 @@ export default defineConfig({
   reporter: [
     ['list'],
     ['html', { open: 'always', outputFolder: 'reports/playwright-report' }],
-    ['allure-playwright', { outputFolder: 'reports/allure-results' }],
+    ['allure-playwright', {
+      outputFolder: 'reports/allure-results',
+      environmentInfo: {
+        os_platform: os.platform(),
+        os_release: os.release(),
+        os_version: os.version(),
+        node_version: process.version,
+      }
+    }],
     ['json', { outputFile: 'reports/json-report/test-results.json' }],
     ['playwright-ctrf-json-reporter', {}]
   ],
